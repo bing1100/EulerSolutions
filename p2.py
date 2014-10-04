@@ -1,10 +1,10 @@
-def runme(nthless1,nth):
-    sum = 0
+def runme(nthless1,nth,sum):
     nthplus1 = nthless1 + nth
-    if nth/2==0:
-        sum+=nth
-    if nth>4000000:
+    if (nth%2==0):
+        return runme(nth,nthplus1,sum+nth)
+    elif (nth > 4000000):
         return sum
-    return runme(nth,nthplus1)
+    else:
+        return runme(nth,nthplus1,sum)
 
-runme(1,1)
+print(runme(1,1,0))
