@@ -1,11 +1,10 @@
 import itertools
 
 def PrimeFactors(num):
-    for i in itertools.count(num/2):
-        print(i)
-        divisor = num/2 - i 
+    for i in range(num//2):
+        divisor = num//2 - i 
         if (num%divisor==0):
-            return divisor
+            return PrimeFactors(divisor)
         elif (divisor==2):
-            return "Cool, it is a prime"   
+            return num   
         
