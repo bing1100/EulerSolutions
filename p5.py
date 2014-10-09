@@ -20,7 +20,7 @@ def f(topnum):
     # Computes the final answer
     for j in listofmultiply:
         multi*=j
-        
+    print(listofmultiply)    
     return multi
         
                 
