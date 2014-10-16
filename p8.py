@@ -44,15 +44,21 @@ def determinator():
     
     for list_int in useable_list_list:
         
+        print(list_int)
+        
         prod = 1
         
         for i in range(13):
+            #print(str(prod) + "*" + str(list_int[i]) + "=")
             prod *= list_int[i]
+        print(str(prod))
+        
         
         max_prod = max(prod,max_prod)
         
         for i_s in range(14,len(list_int)):
-            prod = list_int[i_s] * prod//(list_int[i_s-14]) 
+            
+            prod = list_int[i_s] * (prod/(list_int[i_s-14]))
             
             max_prod = max(prod,max_prod)
             
