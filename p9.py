@@ -33,13 +33,15 @@ def find():
             
             
             if c+b+a==1000:
-                true_value =2
-            elif upper_bound - lower_bound < 3:
-                true_value == 1
-            elif c + b + a > 1000:
+                true_value = 2
+            elif (upper_bound - lower_bound) < 2:
+                true_value = 1
+            elif (c + b + a) > 1000:
                 upper_bound = b
             else:
                 lower_bound = b
+            
+            print(str(lower_bound)+"-"+str(upper_bound) + "-" + str(c+b+a))
                     
         if true_value == 2:
             break
