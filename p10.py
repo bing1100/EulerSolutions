@@ -75,4 +75,4 @@ def summation():
         sum1 += num 
     
     # return the sum 
-    return sum1 - 142913828922
+    return sum1 #- 142913828922
