@@ -10,6 +10,9 @@ import math
 
 list_of_primes=[2]
 
+
+initial_sum= 2000001000000
+
 def findp():
     
     upper_bound = int(math.sqrt(2000000))
@@ -27,23 +30,22 @@ def findp():
             list_of_primes.append(prime_candidate)
     return len(list_of_primes)
 
-findp()
-
-initial_sum = 2000001000000
-
 def find_sum_repeater(current_number):
+    global initial_sum 
     summ = 0
     for prime in list_of_primes:
         if current_number * prime <= 2000000:
             summ += 1
             initial_sum -= current_number*prime
             summ += find_sum_repeater(current_number*prime)
+        else:
+            break
     return summ
 
 def f():
-    
+    findp()
     summ = find_sum_repeater(1)
-    return "iterations:"+str(summ) + "-answer-" + initial_sum
+    return "iterations:"+str(summ) + "-answer-" + str(initial_sum)
             
     
     
