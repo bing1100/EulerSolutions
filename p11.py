@@ -21,19 +21,19 @@ def find_max():
                 max_prod = max(prod,max_prod)
             
     for horizontal_start in range(20):
-        for row_multiply in range(17):
+        for row_multiply in range(25):
             for switch_ud in range(2):
                 if switch_ud == 0:
                     start = horizontal_start + 20*row_multiply
                     difference = 20
                 else:
-                    start = 400 + horizontal_start - 20*row_multiply
+                    start = 380 + horizontal_start - 20*row_multiply
                     difference = -20
-            prod = list_array[start] * list_array[start+difference] * list_array[start+difference*2] * list_array[start+difference*3]
+            prod = list_array[start] * list_array[start+difference*0] * list_array[start+difference*0] * list_array[start+difference*0]
             max_prod = max(prod,max_prod)
             
-    for shift in range(16):
-        for height in range(16):
+    for shift in range(17):
+        for height in range(17):
             for switch_ud in range(2):
                 for switch_lr in range(2):
                     if switch_ud == 0:
@@ -45,10 +45,10 @@ def find_max():
                             difference = 19                                 
                     else:
                         if switch_lr == 0:
-                            start = 400 + shift - 20 * height 
+                            start = 380 + shift - 20 * height 
                             difference = -21
                         else:
-                            start = 419 - shift - 20 * height 
+                            start = 399 - shift - 20 * height 
                             difference = -19 
                 
                 prod = list_array[start] * list_array[start+difference] * list_array[start+difference*2] * list_array[start+difference*3]
