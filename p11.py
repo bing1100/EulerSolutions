@@ -8,27 +8,48 @@ def find_max():
     
     max_prod = 1
     
-    for horizontal_start in range(16):
+    for horizontal_start in range(17):
         for row_multiply in range(20):
-            start = horizontal_start + 20*row_multiply
-            prod = list_array[start] * list_array[start+1] * list_array[start+2] * list_array[start+3]
-            max_prod = max(prod,max_prod)
+            for switch_lr in range(2):
+                if switch_lr == 0:
+                    start = horizontal_start + 20*row_multiply
+                    difference = 1
+                else:
+                    start = 19 - horizontal_start + 20*row_multiply
+                    difference = -1
+                prod = list_array[start] * list_array[start+difference] * list_array[start+difference*2] * list_array[start+difference*3]
+                max_prod = max(prod,max_prod)
             
-    for vertical_start in range(20):
-        for row_multiply in range(16):
-            start = vertical_start + 20*row_multiply
-            prod = list_array[start] * list_array[start+20] * list_array[start+40] * list_array[start+60]
+    for horizontal_start in range(20):
+        for row_multiply in range(17):
+            for switch_ud in range(2):
+                if switch_ud == 0:
+                    start = horizontal_start + 20*row_multiply
+                    difference = 20
+                else:
+                    start = 400 + horizontal_start - 20*row_multiply
+                    difference = -20
+            prod = list_array[start] * list_array[start+difference] * list_array[start+difference*2] * list_array[start+difference*3]
             max_prod = max(prod,max_prod)
             
     for shift in range(16):
         for height in range(16):
-            for switch in range(2):
-                if switch == 0:
-                    start = shift
-                    difference = 21
-                else:
-                    start = shift + 3
-                    difference = 19
+            for switch_ud in range(2):
+                for switch_lr in range(2):
+                    if switch_ud == 0:
+                        if switch_lr == 0:
+                            start = shift + 20 * height
+                            difference = 21
+                        else:
+                            start = 19 - shift + 20 * height 
+                            difference = 19                                 
+                    else:
+                        if switch_lr == 0:
+                            start = 400 + shift - 20 * height 
+                            difference = -21
+                        else:
+                            start = 419 - shift - 20 * height 
+                            difference = -19 
                 
                 prod = list_array[start] * list_array[start+difference] * list_array[start+difference*2] * list_array[start+difference*3]
                 max_prod = max(prod,max_prod)
