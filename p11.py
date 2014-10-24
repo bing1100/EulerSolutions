@@ -29,7 +29,7 @@ def find_max():
                 else:
                     start = 380 + horizontal_start - 20*row_multiply
                     difference = -20
-            prod = list_array[start] * list_array[start+difference*0] * list_array[start+difference*0] * list_array[start+difference*0]
+            prod = list_array[start] * list_array[start+difference*1] * list_array[start+difference*2] * list_array[start+difference*3]
             max_prod = max(prod,max_prod)
             
     for shift in range(17):
