@@ -27,29 +27,28 @@ no_test=[]
 
 def sieve_list():
     for cand in range(500001,1000001):
-        if (cand-1)%3 != 0:
+        if ((cand-1)%3)%2 == 0:
             test.append(cand)
             
 def collatz_recursion(n,length):
     if n == 1:
         return length
     if n%2==0:
-        if (n//2>500000) and (1000000>n//2):
-            no_test.append(n//2)
+        #if (n//2>500000) and (1000000>n//2):
+            #no_test.append(n//2)
         return collatz_recursion(n//2,length+1)
     else:
-        if ((3*n+1)>500000) and (1000000>(3*n+1)):
-            no_test.append(3*n+1)
-        return collatz_recursion(3*n+1,length+1)
+        #if ((3*n+1)>500000) and (1000000>(3*n+1)):
+            #no_test.append(3*n+1)
+        return collatz_recursion((3*n)+1,length+1)
 
 def collatz_finder():
     sieve_list()
     m_len = 0
     num = 1
     for cand in test:
-        if cand not in no_test:
-            if m_len < collatz_recursion(cand,0):
+        n = collatz_recursion(cand,0)
+        if m_len <= n:
+                m_len = n
                 num = cand
     return num
-    
-    
