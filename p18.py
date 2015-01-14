@@ -55,8 +55,8 @@ def first_edge(n):
 
 # Bottom up approach where the levels are combined from the bottom up with the 
 # max sum
-def calculator(py_list,n):
-    temp_list=py_list
+def calculator(n):
+    global t_list
     n_minus=-1
     
     # update the n-1 row and by adding the nth row and only using the largest
@@ -65,6 +65,6 @@ def calculator(py_list,n):
         c_row=n_minus-row
         for i in range(n_minus):
             place = first_edge(c_row)+i
-            temp_list[place] = max(t_list[place]+t_list[n_minus+1],
+            t_list[place] = max(t_list[place]+t_list[n_minus+1],
                                 t_list[place]+t_list[n_minus+2])
     return t_list[0] 
