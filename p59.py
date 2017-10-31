@@ -1,17 +1,21 @@
 import functools
 import copy
 
+# Place data into list format
 cipherFile = open("p059_cipher.txt", "r")
-
 data = [int(x) for x in cipherFile.read().split(",")]
 
+# Common strings to look for in the data, add to this list
 commonStrings = [['t','h','e'], ['a','n','d']]
 
+# The threshold of occ of common strings to print the decoded message
 threshold = 10
 
+# Data storage
 allDecryptions = []
 prunedDecryptions = []
 
+# Function that decodes datum using a length 3 key
 def decryptXOR(datum, len3Key):
     ind = 0
     returnVal = []
@@ -20,6 +24,7 @@ def decryptXOR(datum, len3Key):
         ind += 1
     return returnVal
 
+# Function that generates all decryptions of data using all 3 len lowercase letter combinations
 def decrypt():
     global allDecryptions
     global data
@@ -33,6 +38,7 @@ def decrypt():
                 prunedDecryptions.append([chr(c) for c in decryptXOR(data, len3Key)])
     print("Done Decrypting")
 
+# Function that counts the total occurrence of common strings in some datum
 def countCommonOcc(datum):
     global commonStrings
     lenCommonString = [len(common) for common in commonStrings]
@@ -55,6 +61,8 @@ def countCommonOcc(datum):
 
 print(countCommonOcc(['t','h','e']))
 
+# Function that prunes all the decryptions and only prints those messages with common word occurences
+#  higher than the threshold
 def pruneDecryptions():
     global allDecryptions
     global prunedDecryptions
@@ -63,14 +71,9 @@ def pruneDecryptions():
     print("Starting to prune")
 
     occMap = list(map(lambda datum: countCommonOcc(datum), prunedDecryptions))
-
-    print(occMap)
-
-    print("Done Prunning")
-
     printMap = list(map(lambda num: num >= threshold, occMap))
 
-    print(printMap)
+    print("Done Prunning")
 
     idx = 0 
     for b in printMap:
@@ -78,6 +81,7 @@ def pruneDecryptions():
             print("".join(allDecryptions[idx]))
         idx += 1
 
+# Call the functions
 decrypt()
 pruneDecryptions()
 
